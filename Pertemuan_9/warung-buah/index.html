@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warung Buah - Buah Segar Setiap Hari</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo"><i class="fas fa-apple-whole"></i><span>Warung Buah</span></div>
+      <div class="nav-menu" id="navMenu">
+        <a class="nav-link active" data-filter="all">Semua</a>
+        <a class="nav-link" data-filter="lokal">Buah Lokal</a>
+        <a class="nav-link" data-filter="impor">Buah Impor</a>
+        <a class="nav-link" data-filter="jus">Jus</a>
+      </div>
+      <div class="cart-btn" id="cartBtn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-text">Keranjang</span>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </div>
+      <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Selamat Datang di <span>Warung Buah</span> 🍇</h1>
+      <p>Pilih buah segar favoritmu, masukkan keranjang, dan nikmati!</p>
+      <div class="search-box">
+        <input type="text" id="searchProduk" placeholder="Cari buah favoritmu...">
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+  </section>
+
+  <section class="produk-section">
+    <div class="section-header">
+      <h2><i class="fas fa-list"></i> Menu Kami</h2>
+      <div class="filter-btns">
+        <button class="filter-btn active" data-cat="all">Semua</button>
+        <button class="filter-btn" data-cat="lokal">Buah Lokal</button>
+        <button class="filter-btn" data-cat="impor">Buah Impor</button>
+        <button class="filter-btn" data-cat="jus">Jus</button>
+      </div>
+    </div>
+    <div class="produk-grid" id="produkGrid"></div>
+  </section>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3><i class="fas fa-shopping-bag"></i> Keranjang Belanja</h3>
+      <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span class="total-price" id="cartTotal">Rp 0</span>
+      </div>
+      <button class="btn-checkout" id="btnCheckout"><i class="fas fa-check-circle"></i> Checkout Sekarang</button>
+    </div>
+  </aside>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3><i class="fas fa-user"></i> Data Pembeli</h3>
+        <button type="button" class="cart-close" id="modalClose"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="formPembeli" novalidate>
+        <div class="form-group">
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" placeholder="Contoh: Iren Meiliani">
+          <small class="error" id="errNama"></small>
+        </div>
+        <div class="form-group">
+          <label for="alamat">Alamat</label>
+          <textarea id="alamat" rows="3" placeholder="Alamat lengkap pengiriman"></textarea>
+          <small class="error" id="errAlamat"></small>
+        </div>
+        <div class="form-group">
+          <label for="hp">No. HP</label>
+          <input type="tel" id="hp" placeholder="Contoh: 081234567890">
+          <small class="error" id="errHp"></small>
+        </div>
+        <button type="submit" class="btn-checkout" id="btnKonfirmasi"><i class="fas fa-check-circle"></i> Konfirmasi Pesanan</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMsg">Produk ditambahkan!</span>
+  </div>
+
+  <footer class="footer">
+    <p><strong>Warung Buah</strong> © 2026</p>
+    <p>Praktikum Pemrograman Web Dasar · Prodi Sistem Informasi</p>
+  </footer>
+
+  <script src="JS/script.js"></script>
+</body>
+</html>
