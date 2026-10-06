@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile Interaktif</title>
+<link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="kartu" id="profileCard">
+    <!-- KIRI: PROFIL -->
+    <div class="profil">
+      <div id="dataProfil">
+        <div class="atas">
+          <div class="avatar" id="avatar">🤖</div>
+          <div>
+            <h3 id="profileName">Iren Meiliani Taslim</h3>
+            <p id="profileRole">Front-End Developer</p>
+          </div>
+        </div>
+        <div class="info"><span>📍</span><span id="profileLokasi">Jakarta, Indonesia</span></div>
+        <div class="info"><span>✉️</span><span id="profileEmail">h1101251062@students.untan.ac.id</span></div>
+      </div>
+      <button type="button" id="btnUbah">🔄 Ubah Profil</button>
+      <!-- Panel edit (muncul dengan slideToggle) -->
+      <div id="panelUbah">
+        <h4>Ubah data profil</h4>
+        <div class="grup"><input type="text" id="inNama" placeholder="Nama"></div>
+        <div class="grup"><input type="text" id="inRole" placeholder="Jabatan"></div>
+        <div class="grup"><input type="text" id="inLokasi" placeholder="Lokasi"></div>
+        <div class="grup" style="margin-bottom:0"><input type="text" id="inEmail" placeholder="Email"></div>
+        <div class="error" id="errUbah"></div>
+        <button type="button" id="btnSimpan">Simpan</button>
+        <button type="button" id="btnReset">Reset</button>
+      </div>
+    </div>
+    <!-- KANAN: FORM PESAN -->
+    <div class="form">
+      <h3>💬 Tinggalkan Pesan</h3>
+      <form id="contactForm" novalidate>
+        <div class="grup">
+          <input type="text" id="nama" placeholder="Nama Anda" aria-label="Nama Anda">
+          <div class="error" id="errNama">Masukkan nama minimal 3 karakter</div>
+        </div>
+        <div class="grup">
+          <input type="text" id="email" placeholder="Email Anda" aria-label="Email Anda">
+          <div class="error" id="errEmail">Masukkan email yang valid, contoh: nama@domain.com</div>
+        </div>
+        <div class="grup">
+          <textarea id="pesan" rows="3" placeholder="Tulis pesan Anda" aria-label="Pesan"></textarea>
+          <div class="error" id="errPesan">Tulis pesan minimal 10 karakter</div>
+        </div>
+        <button type="submit" class="kirim">✈️ Kirim</button>
+      </form>
+      <div id="successMessage">✅ Pesan berhasil dikirim. Terima kasih!</div>
+    </div>
+  </div>
+</div>
+<!-- jQuery 3.7.1 harus dimuat SEBELUM script.js -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="JS/script.js"></script>
+</body>
+</html>
