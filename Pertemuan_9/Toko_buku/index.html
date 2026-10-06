@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toko Buku Klasik</title>
+<link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <h1>📚 Toko Buku Klasik</h1>
+  <p>Novel-novel abadi untuk teman membaca Anda. Diskon 10% untuk belanja di atas Rp 100.000.</p>
+</header>
+
+<main class="layout">
+  <section>
+    <h2>Katalog Novel</h2>
+    <div id="katalog" class="katalog"></div>
+  </section>
+
+  <aside class="keranjang">
+    <h2>🛒 Keranjang (<span id="cartCount">0</span>)</h2>
+    <ul id="cartList"></ul>
+    <div id="cartTotal"></div>
+    <button type="button" id="btnCheckout" class="utama">Checkout</button>
+  </aside>
+</main>
+
+<section class="riwayat">
+  <h2>🕘 Riwayat Pembelian</h2>
+  <ul id="riwayatList"></ul>
+  <button type="button" id="btnHapusRiwayat" class="sekunder">Hapus Riwayat</button>
+</section>
+
+<!-- MODAL DATA PEMBELI (Latihan 3) -->
+<div class="overlay" id="modal">
+  <div class="kotak">
+    <h3>Data Pembeli</h3>
+    <p class="ringkas">Total bayar: <strong id="modalTotal"></strong></p>
+    <form id="formPembeli" novalidate>
+      <div class="grup">
+        <label for="nama">Nama</label>
+        <input type="text" id="nama" placeholder="Nama lengkap">
+        <div class="error" id="errNama">Nama minimal 3 karakter</div>
+      </div>
+      <div class="grup">
+        <label for="alamat">Alamat</label>
+        <textarea id="alamat" rows="3" placeholder="Alamat pengiriman lengkap"></textarea>
+        <div class="error" id="errAlamat">Alamat minimal 10 karakter</div>
+      </div>
+      <div class="grup">
+        <label for="hp">No HP</label>
+        <input type="text" id="hp" placeholder="Contoh: 081234567890">
+        <div class="error" id="errHp">Nomor HP tidak valid (contoh: 081234567890)</div>
+      </div>
+      <div class="aksi">
+        <button type="button" id="btnBatal" class="sekunder">Batal</button>
+        <button type="submit" class="utama">Bayar Sekarang</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- jQuery 3.7.1 harus dimuat SEBELUM script.js -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="JS/script.js"></script>
+</body>
+</html>
