@@ -7,18 +7,20 @@
 <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-
-<header class="hero">
+<header class="header">
   <h1>📚 Toko Buku Klasik</h1>
   <p>Novel-novel abadi untuk teman membaca Anda. Diskon 10% untuk belanja di atas Rp 100.000.</p>
 </header>
-
 <main class="layout">
   <section>
     <h2>Katalog Novel</h2>
-    <div id="katalog" class="katalog"></div>
+    <table class="tabel">
+      <thead>
+        <tr><th>No</th><th>Judul</th><th>Penulis</th><th>Harga</th><th>Aksi</th></tr>
+      </thead>
+      <tbody id="katalog"></tbody>
+    </table>
   </section>
-
   <aside class="keranjang">
     <h2>🛒 Keranjang (<span id="cartCount">0</span>)</h2>
     <ul id="cartList"></ul>
@@ -26,13 +28,11 @@
     <button type="button" id="btnCheckout" class="utama">Checkout</button>
   </aside>
 </main>
-
 <section class="riwayat">
   <h2>🕘 Riwayat Pembelian</h2>
   <ul id="riwayatList"></ul>
   <button type="button" id="btnHapusRiwayat" class="sekunder">Hapus Riwayat</button>
 </section>
-
 <!-- MODAL DATA PEMBELI (Latihan 3) -->
 <div class="overlay" id="modal">
   <div class="kotak">
@@ -61,9 +61,7 @@
     </form>
   </div>
 </div>
-
 <div id="toast"></div>
-
 <!-- jQuery 3.7.1 harus dimuat SEBELUM script.js -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="JS/script.js"></script>
