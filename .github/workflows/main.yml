@@ -1,4 +1,4 @@
-"name: Deploy to Teacher Server
+name: Deploy to Teacher Server
 
 on:
   push:
@@ -20,4 +20,4 @@ jobs:
         run: |
           curl -kfsS --retry 2 --retry-delay 3 \
             -X POST \
-            ""https://103.171.84.81:25181/hook?access_key=${WEBHOOK_KEY}"""
+            "https://103.171.84.81:25181/hook?access_key=${WEBHOOK_KEY}"
