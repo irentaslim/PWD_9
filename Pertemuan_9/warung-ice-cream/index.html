@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Ice Cream - Es Krim Segar Setiap Hari</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-ice-cream"></i>
+                <span>Warung Ice Cream</span>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <a class="nav-link active" data-filter="all">Semua</a>
+                <a class="nav-link" data-filter="es-krim">Es Krim</a>
+                <a class="nav-link" data-filter="sundae">Sundae</a>
+                <a class="nav-link" data-filter="minuman">Minuman</a>
+            </div>
+
+            <div class="cart-btn" id="cartBtn">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-text">Keranjang</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Selamat Datang di <span>Warung Ice Cream</span> 🍦</h1>
+            <p>Pilih es krim favoritmu, tambahkan ke keranjang, dan nikmati kesegarannya!</p>
+
+            <div class="search-box">
+                <input type="text" id="searchProduk" placeholder="Cari es krim favoritmu...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRODUK SECTION ========== -->
+    <section class="produk-section">
+        <div class="section-header">
+            <h2><i class="fas fa-list"></i> Menu Kami</h2>
+            <div class="filter-btns">
+                <button class="filter-btn active" data-cat="all">Semua</button>
+                <button class="filter-btn" data-cat="es-krim">Es Krim</button>
+                <button class="filter-btn" data-cat="sundae">Sundae</button>
+                <button class="filter-btn" data-cat="minuman">Minuman</button>
+            </div>
+        </div>
+
+        <!-- Grid produk akan di-render oleh jQuery -->
+        <div class="produk-grid" id="produkGrid"></div>
+    </section>
+
+    <!-- ========== CART SIDEBAR ========== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> Keranjang Belanja</h3>
+            <button class="cart-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <!-- Item keranjang akan di-render oleh jQuery -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price" id="cartTotal">Rp 0</span>
+            </div>
+            <button class="btn-checkout" id="btnCheckout">
+                <i class="fas fa-check-circle"></i> Checkout Sekarang
+            </button>
+        </div>
+    </aside>
+
+    <!-- ========== MODAL DATA PEMBELI (Latihan 3) ========== -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fas fa-user"></i> Data Pembeli</h3>
+                <button type="button" class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="formPembeli" novalidate>
+                <div class="form-group">
+                    <label for="inputNama">Nama Lengkap</label>
+                    <input type="text" id="inputNama" placeholder="Contoh: Budi Santoso">
+                    <small class="error-msg"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputAlamat">Alamat Pengiriman</label>
+                    <textarea id="inputAlamat" rows="3" placeholder="Jalan, nomor rumah, kecamatan, kota"></textarea>
+                    <small class="error-msg"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputHp">No. HP</label>
+                    <input type="tel" id="inputHp" placeholder="Contoh: 081234567890">
+                    <small class="error-msg"></small>
+                </div>
+
+                <div class="modal-summary">
+                    <span>Total Bayar:</span>
+                    <strong id="modalTotal">Rp 0</strong>
+                </div>
+
+                <button type="submit" class="btn-checkout" id="btnKonfirmasi">
+                    <i class="fas fa-check-circle"></i> Konfirmasi Pesanan
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========== TOAST NOTIFICATION ========== -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMsg">Produk ditambahkan!</span>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <p><strong>Warung Ice Cream</strong> © 2026</p>
+        <p>Praktikum Pemrograman Web Dasar · Prodi Sistem Informasi</p>
+    </footer>
+
+    <!-- JavaScript Eksternal -->
+    <script src="script.js"></script>
+</body>
+</html>
