@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Kopi</title>
+
+    <!-- Content Delivery Network (CDN) jQuery & jQuery Validation Plugin -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --coklat-tua: #3b2314;
+            --coklat: #6f4e37;
+            --krem: #fdf6ec;
+            --krem-muda: #f9f1e6;
+            --aksen: #d98e04;
+            --gelap: #2b1d14;
+            --merah: #c0392b;
+            --hijau: #27ae60;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--krem);
+            color: var(--gelap);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- NAVBAR & DROPDOWN (Event: mouseenter/mouseleave, Effect: slideDown/slideUp) --- */
+        nav {
+            background: var(--gelap);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+        }
+
+        .logo {
+            color: var(--aksen);
+            font-weight: 700;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-list a,
+        .dropdown-btn {
+            color: #fff;
+            text-decoration: none;
+            background: none;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-list a:hover,
+        .dropdown-btn:hover {
+            color: var(--aksen);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            list-style: none;
+            padding: 8px 0;
+            margin-top: 8px;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 18px;
+            color: var(--gelap);
+            font-size: 14px;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--krem);
+            color: var(--coklat);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, var(--coklat), var(--gelap));
+            color: #fff;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #e8d5bd;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section h2 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--coklat-tua);
+            text-align: center;
+        }
+
+        /* --- TABS & MENU (Effect: fadeIn, Event: click) --- */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 30px;
+            background: #eadfce;
+            color: var(--gelap);
+            cursor: pointer;
+            font-weight: 600;
+            font: inherit;
+            transition: background 0.2s;
+        }
+
+        .tab.active {
+            background: var(--coklat);
+            color: #fff;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .menu-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            top: 0;
+            border-top: 4px solid var(--aksen);
+        }
+
+        .menu-card h3 {
+            color: var(--coklat-tua);
+            margin-bottom: 8px;
+        }
+
+        .menu-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--aksen);
+            font-size: 16px;
+        }
+
+        /* --- FORMS & VALIDATION --- */
+        .form-section {
+            background: var(--krem-muda);
+            border-top: 1px solid #e0d0c0;
+            border-bottom: 1px solid #e0d0c0;
+        }
+
+        .form-box {
+            background: #fff;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 36px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #fafafa;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--coklat);
+            background: #fff;
+        }
+
+        input.is-error,
+        select.is-error {
+            border-color: var(--merah);
+            background: #fdf2f2;
+        }
+
+        input.is-valid {
+            border-color: var(--hijau);
+        }
+
+        .pesan-error {
+            color: var(--merah);
+            font-size: 13px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .hint {
+            display: none;
+            font-size: 13px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--coklat);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: var(--coklat-tua);
+        }
+
+        /* --- TOAST & SUCCESS NOTIFICATION --- */
+        #toast {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #toast.success {
+            background: var(--hijau);
+        }
+
+        #toast.error {
+            background: var(--merah);
+        }
+
+        .sukses {
+            display: none;
+            margin-top: 20px;
+            padding: 16px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 8px;
+            border-left: 5px solid var(--hijau);
+            font-size: 15px;
+        }
+
+        /* --- BACK TO TOP BUTTON --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--gelap);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background 0.2s;
+        }
+
+        #backToTop:hover {
+            background: var(--coklat);
+        }
+
+        footer {
+            background: var(--gelap);
+            color: #aaa;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR DENGAN DROPDOWN (Minggu 10: Event & Effect) -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Web Kopi</a>
+            <ul class="nav-list">
+                <li><a href="#beranda">Beranda</a></li>
+                <li class="dropdown">
+                    <button class="dropdown-btn" type="button">Menu Kopi ▼</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#menu">Espresso Based</a></li>
+                        <li><a href="#menu">Manual Brew</a></li>
+                        <li><a href="#menu">Non-Coffee</a></li>
+                    </ul>
+                </li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#pesan">Pesan</a></li>
+                <li><a href="#member">Member</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="beranda" class="hero">
+        <div class="container">
+            <h1>Web Kopi</h1>
+            <p>Praktikum Minggu 10 & 11</p>
+        </div>
+    </header>
+
+    <!-- MENU SECTION DENGAN TAB & ANIMATE (Minggu 10) -->
+    <section id="menu" class="container">
+        <h2>Daftar Menu Pilihan</h2>
+        <div class="tabs">
+            <button class="tab active" type="button" data-target="#tab-kopi">Kopi Klasik</button>
+            <button class="tab" type="button" data-target="#tab-nonkopi">Non-Kopi</button>
+            <button class="tab" type="button" data-target="#tab-snack">Camilan</button>
+        </div>
+
+        <div id="tab-kopi" class="tab-panel menu-grid">
+            <div class="menu-card">
+                <h3>Caffe Latte</h3>
+                <p>Espresso pilihan dipadu dengan susu steamed bertekstur lembut.</p>
+                <div class="price">Rp 28.000</div>
+            </div>
+            <div class="menu-card">
+                <h3>Americano</h3>
+                <p>Double shot espresso dengan tambahan air panas segar.</p>
+                <div class="price">Rp 22.000</div>
+            </div>
+        </div>
+
+        <div id="tab-nonkopi" class="tab-panel menu-grid" style="display: none;">
+            <div class="menu-card">
+                <h3>Matcha Latte</h3>
+                <p>Bubuk matcha premium Jepang asli dengan susu segar pilihan.</p>
+                <div class="price">Rp 30.000</div>
+            </div>
+            <div class="menu-card">
+                <h3>Chocolate Regal</h3>
+                <p>Susu cokelat lezat dengan topping biskuit regal hancur.</p>
+                <div class="price">Rp 26.000</div>
+            </div>
+        </div>
+
+        <div id="tab-snack" class="tab-panel menu-grid" style="display: none;">
+            <div class="menu-card">
+                <h3>Croissant Butter</h3>
+                <p>Pastry renyah beraroma mentega gurih yang dipanggang hangat.</p>
+                <div class="price">Rp 20.000</div>
+            </div>
+            <div class="menu-card">
+                <h3>French Fries</h3>
+                <p>Kentang goreng renyah disajikan dengan saus spesial.</p>
+                <div class="price">Rp 18.000</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG KAMI -->
+    <section id="tentang" style="background:#fff;">
+        <div class="container" style="max-width: 700px; text-align: center;">
+            <h2>Tentang Web Kopi</h2>
+            <p>Ruang santai untuk menikmati seduhan biji kopi lokal berkualitas tinggi. Dirancang khusus untuk
+                mahasiswa, pekerja kreatif, dan pencinta senja yang ingin fokus mengerjakan tugas atau sekadar berbagi
+                cerita.</p>
+        </div>
+    </section>
+
+    <!-- FORM PESANAN (Validasi Manual dengan Event & Effect) -->
+    <section id="pesan" class="form-section">
+        <div class="container">
+            <h2>Pesan Cepat</h2>
+            <form id="formPesan" class="form-box" novalidate>
+                <div class="form-group">
+                    <label for="nama">Nama Pemesan</label>
+                    <input type="text" id="nama" class="field wajib" placeholder="Masukkan nama Anda">
+                    <div class="hint">Nama diperlukan untuk memanggil pesanan Anda.</div>
+                </div>
+                <div class="form-group">
+                    <label for="pilihMenu">Pilih Menu Favorit</label>
+                    <select id="pilihMenu" class="field wajib">
+                        <option value="">-- Pilih Menu --</option>
+                        <option>Caffe Latte</option>
+                        <option>Americano</option>
+                        <option>Matcha Latte</option>
+                        <option>Chocolate Regal</option>
+                        <option>Croissant Butter</option>
+                    </select>
+                    <div class="hint">Silakan pilih salah satu menu di atas.</div>
+                </div>
+                <button type="submit" class="btn">Kirim Pesanan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FORM MEMBER (Minggu 11: jQuery Validation Plugin & Custom Method) -->
+    <section id="member">
+        <div class="container">
+            <h2>Pendaftaran Member Resmi</h2>
+            <form id="formMember" class="form-box">
+                <div class="form-group">
+                    <label for="mNama">Nama Lengkap</label>
+                    <input type="text" id="mNama" name="nama" placeholder="Nama lengkap sesuai KTP">
+                </div>
+                <div class="form-group">
+                    <label for="mEmail">Email Aktif</label>
+                    <input type="text" id="mEmail" name="email" placeholder="nama@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="mHp">Nomor WhatsApp / HP</label>
+                    <input type="text" id="mHp" name="hp" placeholder="10-12 digit angka">
+                </div>
+                <div class="form-group">
+                    <label for="mUsia">Usia</label>
+                    <input type="text" id="mUsia" name="usia" placeholder="Minimal 17 tahun">
+                </div>
+                <div class="form-group">
+                    <label for="mPassword">Password</label>
+                    <input type="password" id="mPassword" name="password"
+                        placeholder="Minimal 8 karakter, ada huruf & angka">
+                </div>
+                <div class="form-group">
+                    <label for="mKonfirmasi">Konfirmasi Password</label>
+                    <input type="password" id="mKonfirmasi" name="konfirmasi" placeholder="Ulangi password yang sama">
+                </div>
+                <button type="submit" class="btn">Daftar Member</button>
+                <div class="sukses" id="sukses">
+                    <strong>Pendaftaran Berhasil!</strong> Selamat bergabung menjadi member resmi Web Kopi.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER & UTILITY -->
+    <footer>
+        <p>&copy; 2026 Web Kopi | Aldi - Praktikum Pemrograman Web Dasar - Minggu 10 & 11</p>
+    </footer>
+
+    <div id="toast"></div>
+    <button id="backToTop" type="button" aria-label="Kembali ke atas">&#8593;</button>
+
+    <!-- JAVASCRIPT KODE (Sesuai Rangkuman Materi Modul Gabungan) -->
+    <script>
+        // Nonaktifkan animasi otomatis jika sistem pengguna meminta reduced motion
+        jQuery.fx.off = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        $(function () {
+            // ----- 1. DROPDOWN NAVBAR (Event: mouseenter/mouseleave, Effect: slideDown/slideUp) -----
+            $('.dropdown')
+                .on('mouseenter', function () {
+                    $(this).find('.dropdown-menu').stop(true, true).slideDown(200);
+                })
+                .on('mouseleave', function () {
+                    $(this).find('.dropdown-menu').stop(true, true).slideUp(200);
+                });
+
+            // ----- 2. TAB MENU INTERAKTIF (Event: click, Effect: fadeIn) -----
+            $('.tab-panel').hide().first().show();
+
+            $('.tab').on('click', function () {
+                const target = $(this).data('target');
+                $('.tab').removeClass('active');
+                $(this).addClass('active');
+                $('.tab-panel').hide();
+                $(target).fadeIn(300);
+            });
+
+            // ----- 3. KARTU MENU ANIMATE (Effect: animate) -----
+            $('.menu-card')
+                .css('position', 'relative')
+                .on('mouseenter', function () {
+                    $(this).stop().animate({ top: '-6px' }, 150);
+                })
+                .on('mouseleave', function () {
+                    $(this).stop().animate({ top: '0px' }, 150);
+                });
+
+            // ----- 4. FORM PESANAN (Event: focus/blur + Toast) -----
+            $('#formPesan .field')
+                .on('focus', function () {
+                    $(this).addClass('is-focus').removeClass('is-error');
+                    $(this).siblings('.hint').stop(true, true).slideDown(150);
+                })
+                .on('blur', function () {
+                    $(this).removeClass('is-focus');
+                    $(this).siblings('.hint').stop(true, true).slideUp(150);
+                    if ($(this).hasClass('wajib')) {
+                        $(this).toggleClass('is-error', $(this).val().trim() === '');
+                    }
+                });
+
+            function tampilkanToast(pesan, tipe) {
+                $('#toast')
+                    .stop(true, true)
+                    .removeClass('success error')
+                    .addClass(tipe)
+                    .text(pesan)
+                    .fadeIn(250)
+                    .delay(2500)
+                    .fadeOut(400);
+            }
+
+            $('#formPesan').on('submit', function (e) {
+                e.preventDefault();
+                const nama = $('#nama').val().trim();
+                const menu = $('#pilihMenu').val();
+
+                if (nama === '' || menu === '') {
+                    $('.wajib').each(function () {
+                        $(this).toggleClass('is-error', $(this).val().trim() === '');
+                    });
+                    tampilkanToast('Lengkapi nama dan menu terlebih dahulu!', 'error');
+                    return;
+                }
+
+                tampilkanToast('Pesanan ' + menu + ' atas nama ' + nama + ' berhasil dikirim!', 'success');
+                this.reset();
+            });
+
+            // ----- 5. BACK TO TOP BUTTON (Event: scroll, Effect: fadeIn/fadeOut & animate) -----
+            const $btnTop = $('#backToTop');
+            $(window).on('scroll', function () {
+                if ($(this).scrollTop() > 300) {
+                    $btnTop.fadeIn(200);
+                } else {
+                    $btnTop.fadeOut(200);
+                }
+            });
+
+            $btnTop.on('click', function () {
+                $('html, body').animate({ scrollTop: 0 }, 500);
+            });
+
+            // ----- 6. FORM VALIDATION PLUGIN & CUSTOM METHOD (Minggu 11) -----
+            $.validator.addMethod('nomorHp', function (value, element) {
+                return this.optional(element) || /^[0-9]{10,12}$/.test(value);
+            }, 'Nomor HP harus 10-12 digit angka');
+
+            $.validator.addMethod('hurufAngka', function (value, element) {
+                return this.optional(element) || (/[A-Za-z]/.test(value) && /[0-9]/.test(value));
+            }, 'Password harus mengandung huruf dan angka');
+
+            const validator = $('#formMember').validate({
+                rules: {
+                    nama: { required: true, minlength: 3 },
+                    email: { required: true, email: true },
+                    hp: { required: true, nomorHp: true },
+                    usia: { required: true, digits: true, min: 17 },
+                    password: { required: true, minlength: 8, hurufAngka: true },
+                    konfirmasi: { required: true, equalTo: '#mPassword' }
+                },
+                messages: {
+                    nama: { required: 'Nama wajib diisi', minlength: 'Nama minimal 3 karakter' },
+                    email: { required: 'Email wajib diisi', email: 'Format email tidak valid' },
+                    hp: { required: 'Nomor HP wajib diisi' },
+                    usia: { required: 'Usia wajib diisi', digits: 'Usia harus angka', min: 'Usia minimal 17 tahun' },
+                    password: { required: 'Password wajib diisi', minlength: 'Password minimal 8 karakter' },
+                    konfirmasi: { required: 'Konfirmasi password wajib diisi', equalTo: 'Password konfirmasi tidak sama' }
+                },
+                errorElement: 'div',
+                errorClass: 'pesan-error',
+                highlight: function (el) {
+                    $(el).addClass('is-error').removeClass('is-valid');
+                },
+                unhighlight: function (el) {
+                    $(el).removeClass('is-error').addClass('is-valid');
+                },
+                submitHandler: function (form) {
+                    const nama = $('#mNama').val().trim();
+                    tampilkanToast('Selamat datang, ' + nama + '! Akun member berhasil dibuat.', 'success');
+                    $('#sukses').stop(true, true).slideDown(300).delay(3000).slideUp(300);
+
+                    form.reset();
+                    validator.resetForm();
+                    $('#formMember input').removeClass('is-error is-valid');
+                }
+            });
+
+            // Smooth scroll untuk link internal
+            $('a[href^="#"]').on('click', function (e) {
+                const href = $(this).attr('href');
+                if (href.length < 2) return;
+                const $tujuan = $(href);
+                if ($tujuan.length === 0) return;
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: $tujuan.offset().top - 60 }, 500);
+            });
+        });
+    </script>
+</body>
+
+</html>
+
