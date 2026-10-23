@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langkah Baru - Toko Sepatu</title>
+
+    <!-- CDN jQuery & jQuery Validation Plugin -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR + DROPDOWN -->
+    <nav>
+        <div class="container">
+            <a href="#beranda" class="logo">Langkah Baru</a>
+            <ul class="nav-list">
+                <li><a href="#beranda">Beranda</a></li>
+                <li class="dropdown">
+                    <button class="dropdown-btn" type="button">Koleksi ▼</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#koleksi" data-tab="#tab-pria">Pria</a></li>
+                        <li><a href="#koleksi" data-tab="#tab-wanita">Wanita</a></li>
+                        <li><a href="#koleksi" data-tab="#tab-anak">Anak</a></li>
+                    </ul>
+                </li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#pesan">Pesan</a></li>
+                <li><a href="#member">Member</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="beranda" class="hero">
+        <div class="container">
+            <h1>Sepatu yang pas, langkah yang nyaman.</h1>
+            <p>Sneakers, sepatu formal, dan sepatu anak dengan harga yang bersahabat.</p>
+            <a href="#koleksi" class="btn btn-hero">Lihat koleksi</a>
+        </div>
+    </header>
+
+    <!-- KOLEKSI (TAB) -->
+    <section id="koleksi" class="container">
+        <h2>Koleksi Sepatu</h2>
+        <div class="tabs">
+            <button class="tab active" type="button" data-target="#tab-pria">Pria</button>
+            <button class="tab" type="button" data-target="#tab-wanita">Wanita</button>
+            <button class="tab" type="button" data-target="#tab-anak">Anak</button>
+        </div>
+
+        <div id="tab-wrapper">
+            <div id="tab-pria" class="tab-panel produk-grid">
+                <div class="produk-card">
+                    <div class="swatch" style="background:#2447d6"></div>
+                    <h3>Urban Runner</h3>
+                    <p>Sneakers ringan dengan sol empuk untuk aktivitas harian.</p>
+                    <div class="price">Rp 349.000</div>
+                </div>
+                <div class="produk-card">
+                    <div class="swatch" style="background:#14213d"></div>
+                    <h3>Oxford Classic</h3>
+                    <p>Sepatu formal kulit sintetis untuk kuliah, kantor, dan acara resmi.</p>
+                    <div class="price">Rp 429.000</div>
+                </div>
+            </div>
+
+            <div id="tab-wanita" class="tab-panel produk-grid" style="display:none;">
+                <div class="produk-card">
+                    <div class="swatch" style="background:#e0587a"></div>
+                    <h3>Flat Daily</h3>
+                    <p>Flat shoes tipis yang nyaman dipakai seharian.</p>
+                    <div class="price">Rp 259.000</div>
+                </div>
+                <div class="produk-card">
+                    <div class="swatch" style="background:#7a5cd6"></div>
+                    <h3>Cloud Sneakers</h3>
+                    <p>Sneakers putih bersol tebal dengan bantalan ekstra.</p>
+                    <div class="price">Rp 379.000</div>
+                </div>
+                <div class="produk-card">
+                    <div class="swatch" style="background:#1f9d8a"></div>
+                    <h3>Sandal Pantai</h3>
+                    <p>Sandal anti-licin yang cepat kering.</p>
+                    <div class="price">Rp 149.000</div>
+                </div>
+            </div>
+
+            <div id="tab-anak" class="tab-panel produk-grid" style="display:none;">
+                <div class="produk-card">
+                    <div class="swatch" style="background:#f2a900"></div>
+                    <h3>Mini Sporty</h3>
+                    <p>Sepatu sekolah dengan perekat velcro, mudah dipakai anak.</p>
+                    <div class="price">Rp 199.000</div>
+                </div>
+                <div class="produk-card">
+                    <div class="swatch" style="background:#ff6b35"></div>
+                    <h3>Kids Play</h3>
+                    <p>Sol fleksibel untuk bermain, bahan mudah dibersihkan.</p>
+                    <div class="price">Rp 179.000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="tentang" class="tentang">
+        <div class="container narrow">
+            <h2>Tentang Langkah Baru</h2>
+            <p>Kami menjual sepatu untuk semua usia dengan ukuran lengkap dan bahan yang awet. Tidak yakin ukurannya? Pesan dulu, tukar gratis dalam 7 hari.</p>
+        </div>
+    </section>
+
+    <!-- FORM PESAN CEPAT -->
+    <section id="pesan" class="form-section">
+        <div class="container">
+            <h2>Pesan Cepat</h2>
+            <form id="formPesan" class="form-box" novalidate>
+                <div class="form-group">
+                    <label for="nama">Nama pemesan</label>
+                    <input type="text" id="nama" class="field wajib" placeholder="Masukkan nama Anda">
+                    <div class="hint">Nama dipakai untuk konfirmasi pesanan.</div>
+                </div>
+                <div class="form-group">
+                    <label for="pilihSepatu">Sepatu yang dipesan</label>
+                    <select id="pilihSepatu" class="field wajib">
+                        <option value="">Pilih sepatu</option>
+                        <option>Urban Runner</option>
+                        <option>Oxford Classic</option>
+                        <option>Flat Daily</option>
+                        <option>Cloud Sneakers</option>
+                        <option>Sandal Pantai</option>
+                        <option>Mini Sporty</option>
+                        <option>Kids Play</option>
+                    </select>
+                    <div class="hint">Pilih salah satu sepatu dari daftar.</div>
+                </div>
+                <button type="submit" class="btn">Kirim pesanan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FORM MEMBER (jQuery Validation) -->
+    <section id="member">
+        <div class="container">
+            <h2>Daftar Member</h2>
+            <form id="formMember" class="form-box">
+                <div class="form-group">
+                    <label for="mNama">Nama lengkap</label>
+                    <input type="text" id="mNama" name="nama" placeholder="Nama lengkap">
+                </div>
+                <div class="form-group">
+                    <label for="mEmail">Email</label>
+                    <input type="text" id="mEmail" name="email" placeholder="nama@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="mHp">Nomor WhatsApp / HP</label>
+                    <input type="text" id="mHp" name="hp" placeholder="10-12 digit angka">
+                </div>
+                <div class="form-group">
+                    <label for="mUkuran">Ukuran sepatu</label>
+                    <input type="text" id="mUkuran" name="ukuran" placeholder="Antara 25 sampai 47">
+                </div>
+                <div class="form-group">
+                    <label for="mPassword">Password</label>
+                    <input type="password" id="mPassword" name="password" placeholder="Minimal 8 karakter, ada huruf dan angka">
+                </div>
+                <div class="form-group">
+                    <label for="mKonfirmasi">Konfirmasi password</label>
+                    <input type="password" id="mKonfirmasi" name="konfirmasi" placeholder="Ulangi password yang sama">
+                </div>
+                <button type="submit" class="btn">Daftar member</button>
+                <div class="sukses" id="sukses">
+                    <strong>Pendaftaran berhasil.</strong> Selamat bergabung menjadi member Langkah Baru.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Langkah Baru | Iren Meiliani Taslim - Praktikum Pemrograman Web Dasar, Minggu 10 &amp; 11</p>
+    </footer>
+
+    <div id="toast"></div>
+    <button id="backToTop" type="button" aria-label="Kembali ke atas">&#8593;</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
