@@ -222,6 +222,7 @@ $(function () {
             tampilkanToast('Selamat datang, ' + nama + '. Akun member berhasil dibuat.', 'success');
             $('#sukses').stop(true, true).slideDown(300).delay(3000).slideUp(300);
 
+            
             form.reset();
             validator.resetForm();
             $('#formMember input').removeClass('is-error is-valid');
