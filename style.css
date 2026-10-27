@@ -1,0 +1,164 @@
+:root {
+  --latar: #fff5fa;
+  --kartu: #ffffff;
+  --teks: #38243a;
+  --pudar: #806b83;
+  --aksen: #d94691;
+  --garis: #f0dce9;
+}
+
+body.gelap {
+  --latar: #201725;
+  --kartu: #302137;
+  --teks: #fff0fa;
+  --pudar: #d0b9d1;
+  --aksen: #ff8ac5;
+  --garis: #503b55;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--latar);
+  color: var(--teks);
+  transition: 0.3s;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  border-bottom: 1px solid var(--garis);
+}
+
+.logo {
+  margin: 0;
+  font-size: 26px;
+}
+
+.logo span,
+.perkenalan h1 span {
+  color: var(--aksen);
+}
+
+#tombol-tema {
+  padding: 10px 16px;
+  border: 1px solid var(--aksen);
+  border-radius: 20px;
+  background: var(--kartu);
+  color: var(--aksen);
+  cursor: pointer;
+}
+
+.isi {
+  max-width: 950px;
+  margin: auto;
+  padding: 30px 24px 60px;
+}
+
+.perkenalan {
+  padding: 60px 0;
+}
+
+.label {
+  color: var(--aksen);
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+.perkenalan h1 {
+  font-size: 45px;
+  margin: 10px 0;
+}
+
+.perkenalan p:last-child {
+  color: var(--pudar);
+  font-size: 17px;
+}
+
+#judul-proyek {
+  margin-bottom: 12px;
+}
+
+#cari {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 25px;
+  border: 1px solid var(--garis);
+  border-radius: 10px;
+  background: var(--kartu);
+  color: var(--teks);
+  font-size: 16px;
+}
+
+.daftar-proyek {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.kartu {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  background: var(--kartu);
+  border: 1px solid var(--garis);
+  border-radius: 18px;
+  color: var(--teks);
+  text-decoration: none;
+  box-shadow: 0 5px 20px rgba(150, 50, 110, 0.08);
+  transition: transform 0.2s;
+}
+
+.kartu:hover {
+  transform: translateY(-5px);
+}
+
+.ikon {
+  font-size: 30px;
+  color: var(--aksen);
+}
+
+.kartu h3 {
+  margin-bottom: 5px;
+  color: var(--aksen);
+}
+
+.kartu p {
+  color: var(--pudar);
+}
+
+.tautan {
+  margin-top: auto;
+  font-weight: bold;
+  color: var(--aksen);
+}
+
+#pesan-kosong {
+  display: none;
+  color: var(--pudar);
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: var(--pudar);
+  border-top: 1px solid var(--garis);
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 18px;
+  }
+
+  .perkenalan h1 {
+    font-size: 34px;
+  }
+}

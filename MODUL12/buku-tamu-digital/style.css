@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fff5fa;
+  color: #38243a;
+  margin: 0;
+  padding: 25px;
+  line-height: 1.6;
+}
+
+.kotak {
+  max-width: 440px;
+  margin: 30px auto;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #f0dce9;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(150, 50, 110, 0.1);
+}
+
+a {
+  color: #d94691;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.ikon {
+  margin-top: 25px;
+  font-size: 35px;
+  color: #d94691;
+}
+
+h1 {
+  margin-bottom: 5px;
+  color: #d94691;
+}
+
+.deskripsi {
+  color: #806b83;
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #f0dce9;
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: 2px solid #f5b5d8;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 9px;
+  background: #d94691;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #b8327a;
+}
+
+#pesan {
+  color: #b8327a;
+  font-size: 14px;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0dce9;
+  overflow-wrap: anywhere;
+}
