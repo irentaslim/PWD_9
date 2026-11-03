@@ -1,0 +1,251 @@
+/* =========================================================
+   CampusFlow Admin - CSS kustom
+   File ini dimuat setelah Bootstrap agar bisa menyesuaikan
+   tampilan komponen tanpa mengubah file Bootstrap.
+   ========================================================= */
+
+:root {
+  --ink: #222342;
+  --muted: #777b91;
+  --page: #f6f7fc;
+  --purple: #6658d3;
+  --teal: #149c91;
+  --orange: #e79b3d;
+  --pink: #d85c91;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-size: 0.94rem;
+}
+
+.topbar {
+  min-height: 68px;
+  background: #292747;
+  box-shadow: 0 3px 18px rgba(30, 28, 65, 0.12);
+}
+
+.navbar-brand { letter-spacing: -0.4px; }
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 7px;
+  border-radius: 10px;
+  background: #7669e7;
+  color: #fff;
+  font-size: 0.95rem;
+}
+.brand-light { color: #b9b3ff; }
+.topbar .nav-link { color: #d5d4e4; padding: 0.65rem 0.8rem; }
+.topbar .nav-link:hover, .topbar .nav-link.active { color: #fff; }
+.profile-link { border: 1px solid rgba(255,255,255,0.17); border-radius: 999px; }
+.dropdown-menu { border: 0; border-radius: 12px; padding: 0.5rem; }
+.dropdown-item { padding: 0.6rem 0.8rem; border-radius: 7px; }
+
+.sidebar {
+  min-height: calc(100vh - 68px);
+  background: #fff;
+  border-right: 1px solid #ececf4;
+}
+.sidebar-label {
+  margin: 0.75rem 1rem 0.7rem;
+  color: #a0a2b4;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+.sidebar-menu .list-group-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 3px 0;
+  padding: 0.78rem 1rem;
+  border: 0;
+  border-radius: 10px;
+  color: #666a81;
+  font-weight: 600;
+  background: transparent;
+}
+.sidebar-menu .list-group-item i { width: 20px; font-size: 1.05rem; }
+.sidebar-menu .list-group-item:hover { background: #f5f3ff; color: var(--purple); }
+.sidebar-menu .list-group-item.active {
+  color: #fff;
+  background: linear-gradient(100deg, #6f61dc, #8a7ce8);
+  box-shadow: 0 7px 15px rgba(102, 88, 211, 0.2);
+}
+.sidebar-note {
+  margin: 1.3rem 0.6rem 0;
+  padding: 1rem;
+  border: 1px solid #eeebff;
+  border-radius: 14px;
+  background: #f8f7ff;
+}
+.note-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.65rem;
+  border-radius: 10px;
+  background: #e9e5ff;
+  color: var(--purple);
+}
+.sidebar-note small { color: #77758f; line-height: 1.55; }
+
+.main-content { min-width: 0; }
+.eyebrow {
+  color: var(--purple);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+.page-title { font-size: clamp(1.55rem, 2vw, 2rem); font-weight: 800; letter-spacing: -0.8px; }
+.btn-primary { background: var(--purple); border-color: var(--purple); }
+.btn-primary:hover { background: #5547bf; border-color: #5547bf; }
+
+.stat-card {
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(40, 38, 83, 0.045);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(40, 38, 83, 0.1); }
+.stat-card .card-body { padding: 1.2rem; }
+.stat-purple { background: #eeebff; color: #5547bb; }
+.stat-teal { background: #e2f7f3; color: #087d74; }
+.stat-orange { background: #fff1df; color: #ad6814; }
+.stat-pink { background: #ffebf2; color: #b53f73; }
+.stat-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.stat-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: rgba(255,255,255,0.72);
+  font-size: 1.2rem;
+}
+.stat-trend {
+  padding: 0.25rem 0.45rem;
+  border-radius: 7px;
+  background: rgba(255,255,255,0.7);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.stat-label { color: #65647d; font-size: 0.82rem; font-weight: 600; }
+.stat-number { margin: 0 0 0.25rem; color: #292747; font-size: clamp(1.55rem, 2vw, 2rem); font-weight: 800; letter-spacing: -0.8px; }
+.stat-foot { color: #85869b; font-size: 0.72rem; }
+
+.content-card {
+  border: 1px solid #eeeff6;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(40, 38, 83, 0.035);
+}
+.section-title { font-size: 1.03rem; font-weight: 800; }
+.table { font-size: 0.84rem; }
+.table thead th {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  color: #85869b;
+  background: #fafaff;
+  border-bottom-color: #ededf5;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.table td { padding-top: 0.9rem; padding-bottom: 0.9rem; border-bottom-color: #f0f0f6; }
+.student-cell { display: flex; align-items: center; gap: 10px; min-width: 155px; }
+.student-name { display: block; color: #33334f; font-weight: 700; white-space: nowrap; }
+.student-cell small { color: #999aab; font-size: 0.72rem; }
+.avatar {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+.avatar-purple { color: #5b4dc3; background: #e9e5ff; }
+.avatar-teal { color: #087d74; background: #d9f4ef; }
+.avatar-orange { color: #ad6814; background: #ffebcf; }
+.status-active { color: #137b55; background: #dff7eb; }
+.status-pending { color: #986514; background: #fff0ce; }
+.status-inactive { color: #a63e56; background: #ffe3e9; }
+.detail-btn { white-space: nowrap; border-radius: 8px; }
+.table-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+
+.progress-label { color: #555870; font-size: 0.82rem; font-weight: 600; }
+.progress-item strong { color: #383751; font-size: 0.82rem; }
+.progress { height: 9px; overflow: hidden; border-radius: 20px; background: #eeedf6; }
+.progress-bar { border-radius: 20px; font-size: 0; }
+.progress-purple { background: linear-gradient(90deg, #6b5cda, #a59af7); }
+.progress-teal { background: linear-gradient(90deg, #149c91, #64d0c3); }
+.progress-orange { background: linear-gradient(90deg, #e79b3d, #f5c579); }
+.notice-box {
+  display: flex;
+  gap: 10px;
+  padding: 1rem;
+  border: 1px solid #f5e7c9;
+  border-radius: 12px;
+  background: #fffaf0;
+  color: #9a6b1e;
+}
+.notice-box > i { font-size: 1.1rem; }
+.notice-box strong { font-size: 0.82rem; }
+.notice-box p { margin-top: 0.3rem; color: #8e8067; line-height: 1.5; }
+.dashboard-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  color: #9a9bad;
+  font-size: 0.75rem;
+}
+
+.modal-content { overflow: hidden; border-radius: 18px; }
+.modal-heading { padding: 1.3rem 1.5rem; background: #faf9ff; }
+.detail-profile { display: flex; align-items: center; gap: 12px; }
+.detail-avatar { width: 48px; height: 48px; font-size: 0.9rem; }
+.detail-list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f0f0f6;
+}
+.detail-list > div:last-child { border-bottom: 0; }
+.detail-list dt { color: #85869b; font-size: 0.82rem; font-weight: 600; }
+.detail-list dd { margin: 0; color: #34344f; font-size: 0.84rem; font-weight: 700; text-align: right; overflow-wrap: anywhere; }
+
+@media (max-width: 767.98px) {
+  .sidebar { min-height: auto; border-right: 0; border-bottom: 1px solid #ececf4; }
+  .sidebar-label { margin-top: 0.3rem; }
+  .sidebar-menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px 8px; }
+  .sidebar-menu .list-group-item { margin: 0; padding: 0.7rem; font-size: 0.82rem; }
+  .sidebar-note { display: none; }
+  .main-content { padding-top: 1.4rem !important; }
+  .stat-card .card-body { padding: 1rem; }
+  .stat-icon { width: 36px; height: 36px; }
+  .stat-trend { font-size: 0.65rem; }
+  .content-card .card-header, .content-card .card-body { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .dashboard-footer { flex-direction: column; }
+}
+
+@media (max-width: 380px) {
+  .sidebar-menu { grid-template-columns: 1fr; }
+  .stat-card .card-body { padding: 0.8rem; }
+  .stat-trend { padding: 0.2rem 0.3rem; }
+  .student-cell { min-width: 140px; }
+}
