@@ -20,4 +20,4 @@ jobs:
         run: |
           curl -kfsS --retry 2 --retry-delay 3 \
             -X POST \
-            "https://103.171.84.81:25181/hook?access_key=${WEBHOOK_KEY}"
+            "https://panel.myriset.my.id:25181/hook?access_key=${WEBHOOK_KEY}"
